@@ -6,6 +6,7 @@ do
 done
 rm -rf /tmp/.X1-lock /tmp/.X2-lock
 rm -rf /tmp/.X11-unix/X1 /tmp/.X11-unix/X2
+vncserver -geometry 1366x768 >/dev/null 2>&1
 vncserver -geometry 1280x800 >/dev/null 2>&1
 vncserver -geometry 1440x720 >/dev/null 2>&1
 vncserver -geometry 1280x960 >/dev/null 2>&1
@@ -13,6 +14,7 @@ echo ""
 echo "VNC Server has started"
 echo "----------------------"
 echo "[VNC Address 1] $LAN_IP:1 (Desktop)"
-echo "[VNC Address 2] $LAN_IP:2 (Mobile)"
-echo "[VNC Address 3] $LAN_IP:3 (Tablet)"
+echo "[VNC Address 2] $LAN_IP:2 (Laptop)"
+echo "[VNC Address 3] $LAN_IP:3 (Mobile)"
+echo "[VNC Address 3] $LAN_IP:4 (Tablet)"
 echo ""
