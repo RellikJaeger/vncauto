@@ -1,0 +1,18 @@
+#!/bin/bash
+LAN_IP=$(ifconfig wlan0 | grep inet | grep -v inet6 | awk '{print $2}')
+for i in 0 1 2 3 4 5 6 7 8 9
+do
+	vncserver -kill :$i >/dev/null 2>&1
+done
+rm -rf /tmp/.X1-lock /tmp/.X2-lock
+rm -rf /tmp/.X11-unix/X1 /tmp/.X11-unix/X2
+vncserver -geometry 1280x800 >/dev/null 2>&1
+vncserver -geometry 1440x720 >/dev/null 2>&1
+vncserver -geometry 1280x960 >/dev/null 2>&1
+echo ""
+echo "VNC Server has started"
+echo "----------------------"
+echo "[VNC Address 1] $LAN_IP:1 (Desktop)"
+echo "[VNC Address 2] $LAN_IP:2 (Mobile)"
+echo "[VNC Address 3] $LAN_IP:3 (Tablet)"
+echo ""
