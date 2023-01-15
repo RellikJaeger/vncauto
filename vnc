@@ -1,5 +1,5 @@
 #!/bin/bash
-LAN_IP=$(ifconfig wlan0 | grep inet | grep -v inet6 | awk '{print $2}')
+LAN_IP=$(hostname -I | sed 's/ //g')
 for i in 0 1 2 3 4 5 6 7 8 9
 do
 	vncserver -kill :$i >/dev/null 2>&1
