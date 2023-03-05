@@ -15,3 +15,6 @@ This repo contains `vnc` bash script file.
 
 - You have to install `tightvncserver` and `xfce4` by yourself to use this `vnc` script.
 - Move this `vnc` bash script file into your favorite executable directory. (example: `/usr/bin` or `~/.local/bin`)
+
+# PS
+- If you can't execute this `vnc` bash script file, you can make it as executable `chmod a+x vnc`.
