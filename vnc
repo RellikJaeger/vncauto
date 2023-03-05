@@ -1,33 +1,37 @@
 #!/bin/bash
-# Get LAN IPv4
+
+# Get LAN IPv4.
 LAN_IP=$(hostname -I | grep -E -o '([0-9]{1,3}[\.]){3}[0-9]{1,3}')
 
-# Kill old vnc server instances
+# Kill first 10th old vnc server instances.
 for i in 0 1 2 3 4 5 6 7 8 9
 do
 	vncserver -kill :$i >/dev/null 2>&1
 done
 
-# Remove old caches
+# Remove old caches.
 rm -rf /tmp/.X*-lock
 rm -rf /tmp/.X11-unix/X*
 
-# If "~/.vnc " dir doesn't exist, make "~/.vnc" dir
-if [ ! -d "~/.vnc" ]; then mkdir "~/.vnc"; fi
+# If "~/.vnc " dir doesn't exist, make "~/.vnc" dir.
+if [ ! -d "$HOME/.vnc" ]; then mkdir "$HOME/.vnc"; fi
 
-# If "startxfce4" hasn't add to the "~/.vnc/xstartup" file, add it
-if [ ! grep -e "startxfce4" "~/.vnc/xstartup" ]; then
-	echo "startxfce4 &">>"~/.vnc/xstartup"
-fi
+# If "startxfce4" hasn't add to the "~/.vnc/xstartup" file, add it.
+if ! grep -q -e "startxfce4" "$HOME/.vnc/xstartup"; then echo "startxfce4 &">>"$HOME/.vnc/xstartup"; fi
 
+# Create vnc server instances for different screen sizes.
 vncserver -geometry 1366x768 >/dev/null 2>&1
 vncserver -geometry 1280x800 >/dev/null 2>&1
 vncserver -geometry 1440x720 >/dev/null 2>&1
 vncserver -geometry 1280x960 >/dev/null 2>&1
 
+# Show created vnc server instances to the user.
 echo ""
-echo "VNC Server has started"
-echo "----------------------"
+echo "VNC Server has started with xfce4 default session."
+echo "You will need to install xfce4 by yourself if not yet."
+echo "Example: sudo apt install xfce4"
+echo "You can edit this script if you're using different DE."
+echo "--------------------------------------------------------------------"
 echo "[VNC Address 1] $LAN_IP:1 (Desktop)"
 echo "[VNC Address 2] $LAN_IP:2 (Laptop)"
 echo "[VNC Address 3] $LAN_IP:3 (Mobile)"
