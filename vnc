@@ -4,8 +4,8 @@ for i in 0 1 2 3 4 5 6 7 8 9
 do
 	vncserver -kill :$i >/dev/null 2>&1
 done
-rm -rf /tmp/.X1-lock /tmp/.X2-lock
-rm -rf /tmp/.X11-unix/X1 /tmp/.X11-unix/X2
+rm -rf /tmp/.X*-lock
+rm -rf /tmp/.X11-unix/X*
 vncserver -geometry 1366x768 >/dev/null 2>&1
 vncserver -geometry 1280x800 >/dev/null 2>&1
 vncserver -geometry 1440x720 >/dev/null 2>&1
