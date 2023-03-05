@@ -7,7 +7,7 @@ This repo contains `vnc` bash script file.
 - Get LAN IPv4 automatically.
 - Kill the first 10th old vnc instances automatically.
 - Remove old vnc server caches.
-- Inject `startxfce4 &` command to `"~/.vnc/xstartup"` file (if not yet) in order to start vnc server with default xfce4 session.
+- Inject `startxfce4 &` command to `"~/.vnc/xstartup"` file (if not yet) in order to start vnc server with xfce4 default session.
 - Start new vnc server instances for different screen sizes automatically.
 - Show the newly started vnc server instance addresses to the user.
 
